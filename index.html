@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💛 Galaxia de Flores Amarillas 💛</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💛 Tus Flores Amarillas 💛</title>
     <style>
         * {
             margin: 0;
@@ -17,6 +17,7 @@
             height: 100vh;
             width: 100vw;
             font-family: 'Georgia', serif;
+            touch-action: none; /* Previene zoom accidental en móvil */
         }
 
         .bg-glow {
@@ -57,13 +58,8 @@
         }
 
         @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.2;
-            }
-
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
 
         .title {
@@ -76,6 +72,7 @@
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 140, 0, 0.5);
             z-index: 100;
             letter-spacing: 2px;
+            padding: 0 10px;
         }
 
         .floating-flower {
@@ -89,18 +86,13 @@
             transform: translate(-50%, -50%);
         }
 
-            .floating-flower:hover {
-                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
-                transform: translate(-50%, -50%) scale(1.2);
-            }
+        .floating-flower:hover, .floating-flower:active {
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+            transform: translate(-50%, -50%) scale(1.2);
+        }
 
-            .floating-flower.small {
-                font-size: 35px;
-            }
-
-            .floating-flower.medium {
-                font-size: 45px;
-            }
+        .floating-flower.small { font-size: 35px; }
+        .floating-flower.medium { font-size: 45px; }
 
         .love-text {
             position: fixed;
@@ -116,10 +108,10 @@
             transform: translate(-50%, -50%);
         }
 
-            .love-text:hover {
-                color: #ffd700;
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+        .love-text:hover, .love-text:active {
+            color: #ffd700;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
 
         .modal {
             display: none;
@@ -134,9 +126,7 @@
             z-index: 1000;
         }
 
-            .modal.active {
-                display: flex;
-            }
+        .modal.active { display: flex; }
 
         .letter {
             background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%);
@@ -151,15 +141,8 @@
         }
 
         @keyframes slideIn {
-            from {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .letter h2 {
@@ -194,9 +177,7 @@
             font-weight: bold;
         }
 
-            .close-btn:hover {
-                color: #ff4500;
-            }
+        .close-btn:hover { color: #ff4500; }
 
         .music-btn {
             position: fixed;
@@ -213,30 +194,48 @@
             transition: all 0.3s;
         }
 
-            .music-btn:hover {
-                background: rgba(255, 215, 0, 0.4);
-            }
+        .music-btn:hover, .music-btn:active { 
+            background: rgba(255, 215, 0, 0.4); 
+        }
 
+        /* 📱 AJUSTES ESPECÍFICOS PARA MÓVIL */
         @media (max-width: 768px) {
-            .title {
-                font-size: 1.3em;
+            .title { 
+                font-size: 1.4em; 
+                top: 10px;
+                letter-spacing: 1px;
+                padding: 0 80px 0 10px;
             }
-
-            .floating-flower {
-                font-size: 40px;
+            
+            .music-btn {
+                top: 10px;
+                right: 10px;
+                padding: 8px 14px;
+                font-size: 0.85em;
+                border-radius: 20px;
             }
-
-                .floating-flower.small {
-                    font-size: 25px;
-                }
-
-                .floating-flower.medium {
-                    font-size: 32px;
-                }
-
-            .love-text {
-                font-size: 0.9em;
+            
+            .floating-flower { font-size: 45px; }
+            .floating-flower.small { font-size: 28px; }
+            .floating-flower.medium { font-size: 35px; }
+            
+            .love-text { font-size: 0.95em; }
+            
+            .letter {
+                padding: 25px;
+                width: 92%;
             }
+            
+            .letter h2 { font-size: 1.5em; }
+            .letter p { font-size: 1em; }
+        }
+
+        @media (max-width: 400px) {
+            .title { font-size: 1.2em; }
+            .floating-flower { font-size: 40px; }
+            .floating-flower.small { font-size: 25px; }
+            .floating-flower.medium { font-size: 30px; }
+            .love-text { font-size: 0.85em; }
         }
     </style>
 </head>
@@ -246,9 +245,9 @@
     <canvas id="mainCanvas"></canvas>
 
     <h1 class="title">Tus Flores Amarillas</h1>
-    <button class="music-btn" onclick="toggleMusic()"> Música</button>
+    <button class="music-btn" onclick="toggleMusic()">🎵 Música</button>
 
-    <div class="floating-flower" onclick="showLetter(1)"></div>
+    <div class="floating-flower" onclick="showLetter(1)">🌻</div>
     <div class="floating-flower medium" onclick="showLetter(2)">💐</div>
     <div class="floating-flower small" onclick="showLetter(3)">🌼</div>
     <div class="floating-flower" onclick="showLetter(4)">🌻</div>
@@ -287,16 +286,16 @@
         let heartParticles = [];
         let galaxyParticles = [];
         let floatingParticles = [];
+        let petals = []; // 🌸 Nuevo: Array para la lluvia de pétalos
         let shootingStars = [];
-        let romanticWords = [];
         let time = 0;
         let heartRotationAngle = 0;
         let lastShootingStarTime = 0;
 
-        const romanticMessages = [
-            "Siempre", "Eterna", "Tú", "Amor", "Juntos", "Destino",
-            "Karolina", "Mi vida", "Para siempre", "Infinito"
-        ];
+        const romanticPhrase = ["Quiero", "Ser", "El", "Unico", "Que", "Muerda", "Tu", "Boca"];
+        let currentWordIndex = 0;
+        let phraseComplete = false;
+        let pauseTimer = 0;
 
         function resize() {
             W = canvas.width = window.innerWidth;
@@ -313,6 +312,25 @@
             heartParticles = [];
             galaxyParticles = [];
             floatingParticles = [];
+            petals = [];
+
+            // 🌸 INICIALIZAR LLUVIA DE PÉTALOS AMARILLOS
+            const numPetals = 50;
+            const petalColors = ['#FFD700', '#FFC107', '#FFF176', '#FFB300'];
+            for (let i = 0; i < numPetals; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    size: Math.random() * 8 + 5,
+                    speedY: Math.random() * 1.2 + 0.3,
+                    swayOffset: Math.random() * Math.PI * 2,
+                    swaySpeed: Math.random() * 0.02 + 0.01,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotationSpeed: (Math.random() - 0.5) * 0.04,
+                    alpha: Math.random() * 0.5 + 0.3,
+                    color: petalColors[Math.floor(Math.random() * petalColors.length)]
+                });
+            }
 
             const heartScale = Math.min(W, H) * 0.24;
             const numHeartParticles = 1800;
@@ -375,59 +393,74 @@
             }
         }
 
-        // Frase romántica dividida en palabras
-        const romanticPhrase = ["Quiero", "Ser", "El", "Unico", "Que", "Muerda", "Tu", "Boca"];
-        let currentWordIndex = 0;
-        let phraseComplete = false;
-        let pauseTimer = 0;
+        // 🌸 FUNCIÓN PARA DIBUJAR Y MOVER LOS PÉTALOS
+        function updateAndDrawPetals() {
+            for (let p of petals) {
+                p.y += p.speedY;
+                p.x += Math.sin(time * p.swaySpeed + p.swayOffset) * 0.8;
+                p.rotation += p.rotationSpeed;
+
+                // Reiniciar si sale de la pantalla por abajo
+                if (p.y > H + 20) {
+                    p.y = -20;
+                    p.x = Math.random() * W;
+                }
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.alpha;
+                
+                // Dibujar forma realista de pétalo
+                ctx.beginPath();
+                ctx.moveTo(0, -p.size);
+                ctx.bezierCurveTo(p.size * 0.8, -p.size * 0.5, p.size * 0.8, p.size * 0.8, 0, p.size);
+                ctx.bezierCurveTo(-p.size * 0.8, p.size * 0.8, -p.size * 0.8, -p.size * 0.5, 0, -p.size);
+                ctx.fill();
+                
+                ctx.restore();
+            }
+        }
 
         function createShootingStar() {
             const now = Date.now();
 
-            // Si la frase está completa, esperar 6 segundos antes de reiniciar
             if (phraseComplete) {
-                pauseTimer += 16; // Aproximadamente 16ms por frame
-                if (pauseTimer > 6000) { // 6 segundos de pausa
+                pauseTimer += 16;
+                if (pauseTimer > 6000) {
                     currentWordIndex = 0;
                     phraseComplete = false;
                     pauseTimer = 0;
                 }
-                return; // No crear más estrellas durante la pausa
+                return;
             }
 
-            // Aparición rápida: cada 2-3 segundos
             if (now - lastShootingStarTime > 2000 + Math.random() * 1000) {
-
-                // Obtener la siguiente palabra de la frase
                 const word = romanticPhrase[currentWordIndex];
-
-                // 4 DIRECCIONES ALEATORIAS
                 const direction = Math.floor(Math.random() * 4);
                 let startX, startY, vx, vy;
 
                 switch (direction) {
-                    case 0: // ↘ De arriba-izquierda hacia abajo-derecha
+                    case 0:
                         startX = Math.random() * W * 0.3;
                         startY = Math.random() * H * 0.3;
                         vx = 10 + Math.random() * 5;
                         vy = 6 + Math.random() * 3;
                         break;
-
-                    case 1: // ↙ De arriba-derecha hacia abajo-izquierda
+                    case 1:
                         startX = W - Math.random() * W * 0.3;
                         startY = Math.random() * H * 0.3;
                         vx = -(10 + Math.random() * 5);
                         vy = 6 + Math.random() * 3;
                         break;
-
-                    case 2: // ↓ De arriba hacia abajo (casi vertical)
+                    case 2:
                         startX = W * 0.2 + Math.random() * W * 0.6;
                         startY = Math.random() * H * 0.2;
                         vx = (Math.random() - 0.5) * 4;
                         vy = 12 + Math.random() * 4;
                         break;
-
-                    case 3: // ↗ De abajo-izquierda hacia arriba-derecha
+                    case 3:
                         startX = Math.random() * W * 0.3;
                         startY = H - Math.random() * H * 0.3;
                         vx = 10 + Math.random() * 5;
@@ -436,31 +469,18 @@
                 }
 
                 shootingStars.push({
-                    x: startX,
-                    y: startY,
-                    vx: vx,
-                    vy: vy,
+                    x: startX, y: startY, vx: vx, vy: vy,
                     length: 80 + Math.random() * 60,
-                    life: 1.0,
-                    decay: 0.012 + Math.random() * 0.008,
-                    word: word, // Palabra actual de la frase
-                    wordX: 0,
-                    wordY: 0,
-                    wordLife: 0,
-                    trail: [],
-                    direction: direction,
-                    wordIndex: currentWordIndex // Guardar el índice para debugging
+                    life: 1.0, decay: 0.012 + Math.random() * 0.008,
+                    word: word, wordX: 0, wordY: 0, wordLife: 0,
+                    trail: [], direction: direction
                 });
 
-                // Avanzar al siguiente índice
                 currentWordIndex++;
-
-                // Si llegamos al final de la frase
                 if (currentWordIndex >= romanticPhrase.length) {
                     phraseComplete = true;
                     pauseTimer = 0;
                 }
-
                 lastShootingStarTime = now;
             }
         }
@@ -468,17 +488,13 @@
         function updateAndDrawShootingStars() {
             for (let i = shootingStars.length - 1; i >= 0; i--) {
                 const star = shootingStars[i];
-
                 star.x += star.vx;
                 star.y += star.vy;
                 star.life -= star.decay;
 
                 star.trail.push({ x: star.x, y: star.y });
-                if (star.trail.length > 25) {
-                    star.trail.shift();
-                }
+                if (star.trail.length > 25) star.trail.shift();
 
-                // Estela dorada brillante
                 if (star.trail.length > 1) {
                     for (let j = 0; j < star.trail.length - 1; j++) {
                         const point = star.trail[j];
@@ -502,7 +518,6 @@
                     }
                 }
 
-                // Cabeza brillante de la estrella
                 if (star.life > 0.3) {
                     const headGlow = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, 8);
                     headGlow.addColorStop(0, `rgba(255, 255, 255, ${star.life})`);
@@ -514,63 +529,43 @@
                     ctx.fill();
                 }
 
-                // Palabra romántica en lila brillante
                 if (star.wordLife === 0 && star.life < 0.75) {
                     const offset = 40;
-                    if (star.direction === 0) {
-                        star.wordX = star.x - 50;
-                        star.wordY = star.y + offset;
-                    } else if (star.direction === 1) {
-                        star.wordX = star.x + 10;
-                        star.wordY = star.y + offset;
-                    } else if (star.direction === 2) {
-                        star.wordX = star.x - 40;
-                        star.wordY = star.y + offset;
-                    } else {
-                        star.wordX = star.x - 50;
-                        star.wordY = star.y - offset;
-                    }
+                    if (star.direction === 0) { star.wordX = star.x - 50; star.wordY = star.y + offset; }
+                    else if (star.direction === 1) { star.wordX = star.x + 10; star.wordY = star.y + offset; }
+                    else if (star.direction === 2) { star.wordX = star.x - 40; star.wordY = star.y + offset; }
+                    else { star.wordX = star.x - 50; star.wordY = star.y - offset; }
                     star.wordLife = 1.0;
                 }
 
                 if (star.wordLife > 0) {
                     star.wordLife -= 0.006;
-
                     if (star.wordLife > 0) {
                         ctx.save();
-
                         const appearEffect = Math.min((1 - star.wordLife) * 5, 1);
                         const currentAlpha = star.wordLife * 0.95 * appearEffect;
 
                         ctx.font = 'italic bold 28px Georgia';
                         ctx.textAlign = 'center';
-
-                        // Color lila brillante
                         ctx.fillStyle = `rgba(216, 180, 254, ${currentAlpha})`;
                         ctx.shadowColor = `rgba(168, 85, 247, ${currentAlpha})`;
                         ctx.shadowBlur = 30 * star.wordLife;
-
                         ctx.fillText(star.word, star.wordX, star.wordY);
 
-                        // Halo exterior
                         ctx.font = 'italic bold 30px Georgia';
                         ctx.fillStyle = `rgba(192, 132, 252, ${currentAlpha * 0.5})`;
                         ctx.shadowBlur = 50 * star.wordLife;
                         ctx.fillText(star.word, star.wordX, star.wordY);
 
-                        // Núcleo blanco brillante
                         ctx.font = 'italic bold 26px Georgia';
                         ctx.fillStyle = `rgba(240, 220, 255, ${currentAlpha * 0.7})`;
                         ctx.shadowBlur = 15 * star.wordLife;
                         ctx.fillText(star.word, star.wordX, star.wordY);
-
                         ctx.restore();
                     }
                 }
 
-                const outOfBounds = star.x < -100 || star.x > W + 100 ||
-                    star.y < -100 || star.y > H + 100;
-
+                const outOfBounds = star.x < -100 || star.x > W + 100 || star.y < -100 || star.y > H + 100;
                 if ((star.life <= 0 && star.wordLife <= 0) || outOfBounds) {
                     shootingStars.splice(i, 1);
                 }
@@ -614,7 +609,6 @@
                         const py = currentRootDepth * pTime;
                         const pSize = (1 - pTime) * 3.5;
                         const pAlpha = (1 - pTime) * 0.9;
-
                         ctx.fillStyle = `rgba(255, 255, 200, ${pAlpha})`;
                         ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
                         ctx.shadowBlur = 5;
@@ -627,7 +621,6 @@
 
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
-
                 const mainRootWobble = Math.sin(time * 2) * 3;
                 ctx.strokeStyle = '#4a2c0a';
                 ctx.lineWidth = 4 * easedRoot;
@@ -644,48 +637,41 @@
                     const subDepth1 = currentRootDepth * 0.6 * easedSub1;
                     const startX1 = mainRootWobble * 0.25;
                     const startY1 = currentRootDepth * 0.4;
-
                     ctx.lineWidth = 2.5 * easedSub1;
                     ctx.beginPath();
                     ctx.moveTo(startX1, startY1);
                     ctx.quadraticCurveTo(startX1 - 20 * easedSub1, startY1 + subDepth1 * 0.5, startX1 - 25 * easedSub1, startY1 + subDepth1);
                     ctx.stroke();
                 }
-
                 if (rootProgress > 0.5) {
                     const subProgress2 = (rootProgress - 0.5) / 0.5;
                     const easedSub2 = easeOutBack(subProgress2);
                     const subDepth2 = currentRootDepth * 0.7 * easedSub2;
                     const startX2 = mainRootWobble * 0.25;
                     const startY2 = currentRootDepth * 0.55;
-
                     ctx.lineWidth = 2.5 * easedSub2;
                     ctx.beginPath();
                     ctx.moveTo(startX2, startY2);
                     ctx.quadraticCurveTo(startX2 + 18 * easedSub2, startY2 + subDepth2 * 0.5, startX2 + 22 * easedSub2, startY2 + subDepth2);
                     ctx.stroke();
                 }
-
                 if (rootProgress > 0.6) {
                     const subProgress3 = (rootProgress - 0.6) / 0.4;
                     const easedSub3 = easeOutBack(subProgress3);
                     const subDepth3 = currentRootDepth * 0.5 * easedSub3;
                     const startX3 = mainRootWobble * 0.4;
                     const startY3 = currentRootDepth * 0.75;
-
                     ctx.lineWidth = 1.5 * easedSub3;
                     ctx.beginPath();
                     ctx.moveTo(startX3, startY3);
                     ctx.quadraticCurveTo(startX3 + 10 * easedSub3, startY3 + subDepth3 * 0.5, startX3 + 12 * easedSub3, startY3 + subDepth3);
                     ctx.stroke();
                 }
-
                 ctx.shadowBlur = 0;
 
                 if (rootProgress > 0.8) {
                     const tipGlow = (rootProgress - 0.8) / 0.2;
                     const pulse = 1 + Math.sin(time * 5) * 0.2;
-
                     const tipX = mainRootWobble * 0.5;
                     const tipY = currentRootDepth;
                     const g1 = ctx.createRadialGradient(tipX, tipY, 0, tipX, tipY, 12 * pulse);
@@ -707,7 +693,6 @@
                 const stemTopY = -currentStemHeight;
                 const windFreq = time * 5;
                 const windBend = Math.sin(windFreq + (isLeft ? 0 : 2)) * 15 * easedStemProgress;
-
                 const stemGradient = ctx.createLinearGradient(0, 0, windBend * 0.5, stemTopY);
                 stemGradient.addColorStop(0, '#2d5016');
                 stemGradient.addColorStop(0.5, '#4a7c2e');
@@ -730,8 +715,7 @@
 
                     ctx.save();
                     ctx.translate(currentWind - 2, currentStemMid);
-                    const leafWobble1 = Math.sin(time * 6) * 0.15;
-                    ctx.rotate(-0.8 + (leafProgress * 0.5) + leafWobble1);
+                    ctx.rotate(-0.8 + (leafProgress * 0.5) + Math.sin(time * 6) * 0.15);
                     ctx.fillStyle = '#4a7c2e';
                     ctx.beginPath();
                     ctx.ellipse(-leafSize / 2, 0, leafSize, leafSize * 0.4, 0, 0, Math.PI * 2);
@@ -746,8 +730,7 @@
 
                     ctx.save();
                     ctx.translate(currentWind + 2, currentStemMid + 25);
-                    const leafWobble2 = Math.sin(time * 6 + 1) * 0.15;
-                    ctx.rotate(0.8 - (leafProgress * 0.5) + leafWobble2);
+                    ctx.rotate(0.8 - (leafProgress * 0.5) + Math.sin(time * 6 + 1) * 0.15);
                     ctx.fillStyle = '#5a8c3e';
                     ctx.beginPath();
                     ctx.ellipse(leafSize / 2, 0, leafSize, leafSize * 0.4, 0, 0, Math.PI * 2);
@@ -768,17 +751,13 @@
 
                     if (rawFlowerProgress < 0.3) {
                         const budScale = rawFlowerProgress / 0.3;
-                        const budShake = Math.sin(time * 15) * 0.1 * rawFlowerProgress;
-
                         ctx.save();
-                        ctx.translate(currentWindTop + budShake, flowerY);
+                        ctx.translate(currentWindTop + Math.sin(time * 15) * 0.1 * rawFlowerProgress, flowerY);
                         ctx.scale(budScale, budScale);
-
                         ctx.fillStyle = '#8ba84a';
                         ctx.beginPath();
                         ctx.ellipse(0, 0, 10, 14, 0, 0, Math.PI * 2);
                         ctx.fill();
-
                         ctx.strokeStyle = '#6b8830';
                         ctx.lineWidth = 1.5;
                         ctx.beginPath();
@@ -789,12 +768,9 @@
                     } else {
                         const bloomRaw = (rawFlowerProgress - 0.3) / 0.7;
                         const bloomProgress = easeOutBack(bloomRaw);
-
                         ctx.save();
                         ctx.translate(currentWindTop, flowerY);
-
-                        const sway = Math.sin(time * 4 + (isLeft ? 0 : 3)) * 0.25 * bloomProgress;
-                        ctx.rotate(sway);
+                        ctx.rotate(Math.sin(time * 4 + (isLeft ? 0 : 3)) * 0.25 * bloomProgress);
 
                         const petalCount = 14;
                         const maxPetalLength = 24;
@@ -805,20 +781,16 @@
                         for (let i = 0; i < petalCount; i++) {
                             const angle = (i / petalCount) * Math.PI * 2;
                             const petalReach = petalLength * (0.5 + bloomProgress * 0.5) * petalPulse;
-
                             ctx.save();
                             ctx.rotate(angle);
-
                             const petalGradient = ctx.createLinearGradient(0, 0, 0, -petalReach);
                             petalGradient.addColorStop(0, '#FFB400');
                             petalGradient.addColorStop(0.5, '#FFD700');
                             petalGradient.addColorStop(1, '#FFF080');
-
                             ctx.fillStyle = petalGradient;
                             ctx.beginPath();
                             ctx.ellipse(0, -petalReach * 0.6, petalWidth, petalReach * 0.6, 0, 0, Math.PI * 2);
                             ctx.fill();
-
                             ctx.strokeStyle = 'rgba(255, 180, 0, 0.6)';
                             ctx.lineWidth = 0.5;
                             ctx.stroke();
@@ -830,7 +802,6 @@
                         centerGradient.addColorStop(0, '#4a2c0a');
                         centerGradient.addColorStop(0.6, '#6b3f15');
                         centerGradient.addColorStop(1, '#8b5a2b');
-
                         ctx.fillStyle = centerGradient;
                         ctx.beginPath();
                         ctx.arc(0, 0, centerSize, 0, Math.PI * 2);
@@ -865,25 +836,19 @@
 
                         if (bloomProgress > 0.4) {
                             const sparkleIntensity = Math.min((bloomProgress - 0.4) / 0.6, 1);
-                            const numSparkles = 20;
-
-                            for (let i = 0; i < numSparkles; i++) {
-                                const orbitAngle = (i / numSparkles) * Math.PI * 2 + time * 5;
+                            for (let i = 0; i < 20; i++) {
+                                const orbitAngle = (i / 20) * Math.PI * 2 + time * 5;
                                 const orbitRadius = (maxPetalLength * 1.4) + Math.sin(time * 4 + i * 1.5) * 12;
-
                                 const sx = Math.cos(orbitAngle) * orbitRadius;
                                 const sy = Math.sin(orbitAngle) * orbitRadius * 0.7;
-
                                 const twinkle = (Math.sin(time * 12 + i * 2.5) + 1) / 2;
 
                                 if (twinkle > 0.3) {
                                     const sparkleSize = (2 + Math.sin(time * 8 + i) * 0.8) * twinkle;
-
                                     ctx.fillStyle = `rgba(255, 255, 220, ${twinkle * sparkleIntensity * 0.9})`;
                                     ctx.beginPath();
                                     ctx.arc(sx, sy, sparkleSize, 0, Math.PI * 2);
                                     ctx.fill();
-
                                     ctx.fillStyle = `rgba(255, 255, 255, ${twinkle * sparkleIntensity * 0.5})`;
                                     ctx.beginPath();
                                     ctx.arc(sx, sy, sparkleSize * 3, 0, Math.PI * 2);
@@ -891,7 +856,6 @@
                                 }
                             }
                         }
-
                         ctx.restore();
                     }
                 }
@@ -910,7 +874,6 @@
                 const scaleZ = p.z * sinRotation * 0.3 * globalPulse;
                 const finalX = centerX + rotatedX + scaleZ;
                 const finalY = centerY + p.baseY * globalPulse;
-
                 const depthScale = 1 + p.z * sinRotation * 0.2;
                 const finalSize = p.size * depthScale * globalPulse;
                 const shimmer = Math.sin(time * 2.5 + p.phase) * 0.2 + 0.8;
@@ -936,43 +899,40 @@
             ctx.textBaseline = 'middle';
             ctx.shadowColor = 'rgba(255, 215, 0, 0.9)';
             ctx.shadowBlur = 25;
-            ctx.fillText('🤎Karolina🤎', centerX, centerY - 10);
+            ctx.fillText('Karolina 🤎', centerX, centerY - 10);
             ctx.restore();
         }
 
         function drawBloomingFlowers() {
             const heartScale = Math.min(W, H) * 0.24;
-
-            const leftX = centerX - heartScale * 1.9;
-            const rightX = centerX + heartScale * 1.9;
-
-            const flowerY = centerY + heartScale * 1.9;
-
-            const flowerScale = Math.min(W, H) * 0.0018;
+            
+            // 📱 Ajuste para que se vea perfecto en celular
+            const isMobile = W < 768;
+            const separationFactor = isMobile ? 1.5 : 1.9;
+            const verticalFactor = isMobile ? 1.5 : 1.9;
+            const flowerScale = isMobile ? Math.min(W, H) * 0.0014 : Math.min(W, H) * 0.0018;
+            
+            const leftX = centerX - heartScale * separationFactor;
+            const rightX = centerX + heartScale * separationFactor;
+            const flowerY = centerY + heartScale * verticalFactor;
+            
             const cycleDuration = 4.0;
             const cycleTime = time % cycleDuration;
-
+            
             let mainProgress;
-            if (cycleTime < cycleDuration * 0.6) {
-                mainProgress = cycleTime / (cycleDuration * 0.6);
-            } else if (cycleTime < cycleDuration * 0.85) {
-                mainProgress = 1;
-            } else {
-                mainProgress = 1 - (cycleTime - cycleDuration * 0.85) / (cycleDuration * 0.15);
-            }
-
+            if (cycleTime < cycleDuration * 0.6) mainProgress = cycleTime / (cycleDuration * 0.6);
+            else if (cycleTime < cycleDuration * 0.85) mainProgress = 1;
+            else mainProgress = 1 - (cycleTime - cycleDuration * 0.85) / (cycleDuration * 0.15);
+            
             const leftProgress = Math.max(0, Math.min(1, mainProgress));
             drawBloomingFlower(leftX, flowerY, leftProgress, flowerScale, true);
-
+            
             const rightCycleTime = (time + cycleDuration / 2) % cycleDuration;
             let rightProgress;
-            if (rightCycleTime < cycleDuration * 0.6) {
-                rightProgress = rightCycleTime / (cycleDuration * 0.6);
-            } else if (rightCycleTime < cycleDuration * 0.85) {
-                rightProgress = 1;
-            } else {
-                rightProgress = 1 - (rightCycleTime - cycleDuration * 0.85) / (cycleDuration * 0.15);
-            }
+            if (rightCycleTime < cycleDuration * 0.6) rightProgress = rightCycleTime / (cycleDuration * 0.6);
+            else if (rightCycleTime < cycleDuration * 0.85) rightProgress = 1;
+            else rightProgress = 1 - (rightCycleTime - cycleDuration * 0.85) / (cycleDuration * 0.15);
+            
             rightProgress = Math.max(0, Math.min(1, rightProgress));
             drawBloomingFlower(rightX, flowerY, rightProgress, flowerScale, false);
         }
@@ -983,7 +943,6 @@
                 p.angle += rotationSpeed;
                 const x = p.centerX + Math.cos(p.angle) * p.radius;
                 const y = p.centerY + Math.sin(p.angle) * p.radius * 0.4;
-
                 const shimmer = Math.sin(time * 2 + p.phase) * 0.3 + 0.7;
                 const alpha = p.alpha * shimmer;
                 const distRatio = p.radius / (Math.min(W, H) * 0.24 * 2.8);
@@ -1029,14 +988,15 @@
         function animate() {
             ctx.clearRect(0, 0, W, H);
             time += 0.016;
-
+            
+            updateAndDrawPetals(); // 🌸 Dibujar pétalos en el fondo
             createShootingStar();
             updateAndDrawShootingStars();
             drawFloatingParticles();
             drawGalaxy();
             drawHeart();
             drawBloomingFlowers();
-
+            
             requestAnimationFrame(animate);
         }
 
@@ -1098,8 +1058,8 @@
 
         const letters = {
             1: { title: "Eres Mi Sol 🤎", content: "Me Encanta Cómo Iluminas Mis Días De La Forma Más Natural. Gracias Por Hacer Que Cada Momento A Tu Lado Sea Tan Especial Y Esté Lleno De Buena Vibra.", signature: "Para Siempre Juntos " },
-            2: { title: "Te Adoro 💕", content: "Olo Quería Recordarte Lo Especial Que Eres Para Mí. Gracias Por Hacer Que Estos Días Sean Tan Bonitos, Ligeros Y Llenos De Detalles.", signature: "Con Todo Mi Amor 💛" },
-            3: { title: "🤎Karolina🤎", content: "Karolina, Me Encanta Descubrir Un Poco Más De Ti Cada Día. Eres Una Persona Increíble Y Me Haces Muy Feliz Con Tu Forma De Ser.", signature: "Eternamente Tuyo " },
+            2: { title: "Te Adoro 💕", content: "Solo Quería Recordarte Lo Especial Que Eres Para Mí. Gracias Por Hacer Que Estos Días Sean Tan Bonitos, Ligeros Y Llenos De Detalles.", signature: "Con Todo Mi Amor 💛" },
+            3: { title: "Karolina 🤎", content: "Karolina, Me Encanta Descubrir Un Poco Más De Ti Cada Día. Eres Una Persona Increíble Y Me Haces Muy Feliz Con Tu Forma De Ser.", signature: "Eternamente Tuyo " },
             4: { title: "Mi Amorsito 🤎", content: "Prometo Estar Contigo En Cada Amanecer Y Cada Atardecer, Reír Contigo En Los Buenos Momentos Y Sostenerte En Los Difíciles.", signature: "Siempre Tuyo ✨" },
             5: { title: "Me Encantas 🌻", content: "Cada Detalle Tuyo Me Gusta Más. Gracias Por Ser Tan Auténtica Y Por Hacer Que Mis Días Tengan Un Color Diferente.", signature: "Con Amor Eterno " },
             6: { title: "Qué Bonito Es Esto 💕", content: "Estos Meses A Tu Lado Han Sido Increíbles. Me Encanta La Química Que Tenemos Y Las Ganas Que Tengo De Seguir Conociéndote.", signature: "Mi Todo 💕" },
@@ -1131,7 +1091,7 @@
             const btn = document.querySelector('.music-btn');
             if (musicPlaying) {
                 bgMusic.pause();
-                btn.textContent = ' Música';
+                btn.textContent = '🎵 Música';
                 musicPlaying = false;
             } else {
                 bgMusic.play().catch(e => console.log('Audio no disponible'));
