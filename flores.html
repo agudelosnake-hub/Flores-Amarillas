@@ -25,10 +25,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(ellipse at 50% 60%, rgba(255, 200, 0, 0.25) 0%, transparent 70%),
-                radial-gradient(ellipse at 50% 50%, rgba(180, 150, 0, 0.15) 0%, transparent 60%),
-                #000;
+            background: radial-gradient(ellipse at 50% 60%, rgba(255, 200, 0, 0.25) 0%, transparent 70%), radial-gradient(ellipse at 50% 50%, rgba(180, 150, 0, 0.15) 0%, transparent 60%), #000;
             z-index: 0;
         }
 
@@ -60,8 +57,13 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
+            0%, 100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .title {
@@ -87,13 +89,18 @@
             transform: translate(-50%, -50%);
         }
 
-        .floating-flower:hover {
-            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
-            transform: translate(-50%, -50%) scale(1.2);
-        }
+            .floating-flower:hover {
+                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+                transform: translate(-50%, -50%) scale(1.2);
+            }
 
-        .floating-flower.small { font-size: 35px; }
-        .floating-flower.medium { font-size: 45px; }
+            .floating-flower.small {
+                font-size: 35px;
+            }
+
+            .floating-flower.medium {
+                font-size: 45px;
+            }
 
         .love-text {
             position: fixed;
@@ -109,10 +116,10 @@
             transform: translate(-50%, -50%);
         }
 
-        .love-text:hover {
-            color: #ffd700;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
+            .love-text:hover {
+                color: #ffd700;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
 
         .modal {
             display: none;
@@ -127,7 +134,9 @@
             z-index: 1000;
         }
 
-        .modal.active { display: flex; }
+            .modal.active {
+                display: flex;
+            }
 
         .letter {
             background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%);
@@ -142,8 +151,15 @@
         }
 
         @keyframes slideIn {
-            from { transform: translateY(-100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .letter h2 {
@@ -178,7 +194,9 @@
             font-weight: bold;
         }
 
-        .close-btn:hover { color: #ff4500; }
+            .close-btn:hover {
+                color: #ff4500;
+            }
 
         .music-btn {
             position: fixed;
@@ -195,14 +213,30 @@
             transition: all 0.3s;
         }
 
-        .music-btn:hover { background: rgba(255, 215, 0, 0.4); }
+            .music-btn:hover {
+                background: rgba(255, 215, 0, 0.4);
+            }
 
         @media (max-width: 768px) {
-            .title { font-size: 1.3em; }
-            .floating-flower { font-size: 40px; }
-            .floating-flower.small { font-size: 25px; }
-            .floating-flower.medium { font-size: 32px; }
-            .love-text { font-size: 0.9em; }
+            .title {
+                font-size: 1.3em;
+            }
+
+            .floating-flower {
+                font-size: 40px;
+            }
+
+                .floating-flower.small {
+                    font-size: 25px;
+                }
+
+                .floating-flower.medium {
+                    font-size: 32px;
+                }
+
+            .love-text {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -212,9 +246,9 @@
     <canvas id="mainCanvas"></canvas>
 
     <h1 class="title">Galaxia de Flores Amarillas</h1>
-    <button class="music-btn" onclick="toggleMusic()">🎵 Música</button>
+    <button class="music-btn" onclick="toggleMusic()"> Música</button>
 
-    <div class="floating-flower" onclick="showLetter(1)">🌻</div>
+    <div class="floating-flower" onclick="showLetter(1)"></div>
     <div class="floating-flower medium" onclick="showLetter(2)">💐</div>
     <div class="floating-flower small" onclick="showLetter(3)">🌼</div>
     <div class="floating-flower" onclick="showLetter(4)">🌻</div>
@@ -223,13 +257,13 @@
     <div class="floating-flower small" onclick="showLetter(7)">🌼</div>
     <div class="floating-flower small" onclick="showLetter(8)">🌻</div>
 
-    <div class="love-text" onclick="showLetter(1)">Eres mi sol 💛</div>
-    <div class="love-text" onclick="showLetter(2)">Te adoro 💕</div>
+    <div class="love-text" onclick="showLetter(1)">Eres Mi Sol 💛</div>
+    <div class="love-text" onclick="showLetter(2)">Te Adoro 💕</div>
     <div class="love-text" onclick="showLetter(3)">Karolina 🤎</div>
     <div class="love-text" onclick="showLetter(4)">Mi Amor </div>
-    <div class="love-text" onclick="showLetter(5)">Me encantas </div>
-    <div class="love-text" onclick="showLetter(6)">Amor de mi vida </div>
-    <div class="love-text" onclick="showLetter(7)">Amor de mi vida 💛</div>
+    <div class="love-text" onclick="showLetter(5)">Me Encantas </div>
+    <div class="love-text" onclick="showLetter(6)">Amor De Mi Vida </div>
+    <div class="love-text" onclick="showLetter(7)">Mi Amorsito 💛</div>
     <div class="love-text" onclick="showLetter(8)">Siempre juntos </div>
 
     <div class="modal" id="letterModal">
@@ -253,8 +287,16 @@
         let heartParticles = [];
         let galaxyParticles = [];
         let floatingParticles = [];
+        let shootingStars = [];
+        let romanticWords = [];
         let time = 0;
         let heartRotationAngle = 0;
+        let lastShootingStarTime = 0;
+
+        const romanticMessages = [
+            "Siempre", "Eterna", "Tú", "Amor", "Juntos", "Destino",
+            "Karolina", "Mi vida", "Para siempre", "Infinito"
+        ];
 
         function resize() {
             W = canvas.width = window.innerWidth;
@@ -265,29 +307,29 @@
         }
 
         function heartX(t) { return 16 * Math.pow(Math.sin(t), 3); }
-        function heartY(t) { return -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)); }
+        function heartY(t) { return -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)); }
 
         function initParticles() {
             heartParticles = [];
             galaxyParticles = [];
             floatingParticles = [];
 
-            const heartScale = Math.min(W, H) * 0.24; 
+            const heartScale = Math.min(W, H) * 0.24;
             const numHeartParticles = 1800;
-            
+
             for (let i = 0; i < numHeartParticles; i++) {
                 const t = Math.random() * Math.PI * 2;
                 const hx = heartX(t);
                 const hy = heartY(t);
-                
+
                 const isOutline = Math.random() > 0.4;
                 const dispersion = isOutline ? (Math.random() - 0.5) * 3 : (Math.random() - 0.5) * (heartScale * 0.6);
-                
+
                 const colorVar = Math.random();
                 let r = 255, g = 215, b = 0;
                 if (colorVar > 0.85) { r = 255; g = 250; b = 205; }
                 else if (colorVar > 0.5) { r = 255; g = 180; b = 0; }
-                
+
                 heartParticles.push({
                     baseX: hx * heartScale / 16 + dispersion,
                     baseY: hy * heartScale / 16 + dispersion,
@@ -302,12 +344,12 @@
 
             const galaxyCenterY = centerY + heartScale * 0.5;
             const numGalaxyParticles = 3500;
-            
+
             for (let i = 0; i < numGalaxyParticles; i++) {
                 const angle = Math.random() * Math.PI * 2;
-                const radius = Math.random() * heartScale * 2.8; 
-                const spiralAngle = angle + radius * 0.008; 
-                
+                const radius = Math.random() * heartScale * 2.8;
+                const spiralAngle = angle + radius * 0.008;
+
                 galaxyParticles.push({
                     angle: spiralAngle,
                     radius: radius,
@@ -333,6 +375,208 @@
             }
         }
 
+        // Frase romántica dividida en palabras
+        const romanticPhrase = ["Quiero", "Ser", "El", "Unico", "Que", "Muerda", "Tu", "Boca"];
+        let currentWordIndex = 0;
+        let phraseComplete = false;
+        let pauseTimer = 0;
+
+        function createShootingStar() {
+            const now = Date.now();
+
+            // Si la frase está completa, esperar 6 segundos antes de reiniciar
+            if (phraseComplete) {
+                pauseTimer += 16; // Aproximadamente 16ms por frame
+                if (pauseTimer > 6000) { // 6 segundos de pausa
+                    currentWordIndex = 0;
+                    phraseComplete = false;
+                    pauseTimer = 0;
+                }
+                return; // No crear más estrellas durante la pausa
+            }
+
+            // Aparición rápida: cada 2-3 segundos
+            if (now - lastShootingStarTime > 2000 + Math.random() * 1000) {
+
+                // Obtener la siguiente palabra de la frase
+                const word = romanticPhrase[currentWordIndex];
+
+                // 4 DIRECCIONES ALEATORIAS
+                const direction = Math.floor(Math.random() * 4);
+                let startX, startY, vx, vy;
+
+                switch (direction) {
+                    case 0: // ↘ De arriba-izquierda hacia abajo-derecha
+                        startX = Math.random() * W * 0.3;
+                        startY = Math.random() * H * 0.3;
+                        vx = 10 + Math.random() * 5;
+                        vy = 6 + Math.random() * 3;
+                        break;
+
+                    case 1: // ↙ De arriba-derecha hacia abajo-izquierda
+                        startX = W - Math.random() * W * 0.3;
+                        startY = Math.random() * H * 0.3;
+                        vx = -(10 + Math.random() * 5);
+                        vy = 6 + Math.random() * 3;
+                        break;
+
+                    case 2: // ↓ De arriba hacia abajo (casi vertical)
+                        startX = W * 0.2 + Math.random() * W * 0.6;
+                        startY = Math.random() * H * 0.2;
+                        vx = (Math.random() - 0.5) * 4;
+                        vy = 12 + Math.random() * 4;
+                        break;
+
+                    case 3: // ↗ De abajo-izquierda hacia arriba-derecha
+                        startX = Math.random() * W * 0.3;
+                        startY = H - Math.random() * H * 0.3;
+                        vx = 10 + Math.random() * 5;
+                        vy = -(6 + Math.random() * 3);
+                        break;
+                }
+
+                shootingStars.push({
+                    x: startX,
+                    y: startY,
+                    vx: vx,
+                    vy: vy,
+                    length: 80 + Math.random() * 60,
+                    life: 1.0,
+                    decay: 0.012 + Math.random() * 0.008,
+                    word: word, // Palabra actual de la frase
+                    wordX: 0,
+                    wordY: 0,
+                    wordLife: 0,
+                    trail: [],
+                    direction: direction,
+                    wordIndex: currentWordIndex // Guardar el índice para debugging
+                });
+
+                // Avanzar al siguiente índice
+                currentWordIndex++;
+
+                // Si llegamos al final de la frase
+                if (currentWordIndex >= romanticPhrase.length) {
+                    phraseComplete = true;
+                    pauseTimer = 0;
+                }
+
+                lastShootingStarTime = now;
+            }
+        }
+
+        function updateAndDrawShootingStars() {
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const star = shootingStars[i];
+
+                star.x += star.vx;
+                star.y += star.vy;
+                star.life -= star.decay;
+
+                star.trail.push({ x: star.x, y: star.y });
+                if (star.trail.length > 25) {
+                    star.trail.shift();
+                }
+
+                // Estela dorada brillante
+                if (star.trail.length > 1) {
+                    for (let j = 0; j < star.trail.length - 1; j++) {
+                        const point = star.trail[j];
+                        const nextPoint = star.trail[j + 1];
+                        const alpha = (j / star.trail.length) * star.life * 0.9;
+
+                        ctx.strokeStyle = `rgba(255, 255, 220, ${alpha})`;
+                        ctx.lineWidth = (j / star.trail.length) * 3.5;
+                        ctx.lineCap = 'round';
+                        ctx.beginPath();
+                        ctx.moveTo(point.x, point.y);
+                        ctx.lineTo(nextPoint.x, nextPoint.y);
+                        ctx.stroke();
+
+                        if (j % 2 === 0) {
+                            ctx.fillStyle = `rgba(255, 215, 0, ${alpha * 0.6})`;
+                            ctx.beginPath();
+                            ctx.arc(point.x, point.y, (j / star.trail.length) * 2.5, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    }
+                }
+
+                // Cabeza brillante de la estrella
+                if (star.life > 0.3) {
+                    const headGlow = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, 8);
+                    headGlow.addColorStop(0, `rgba(255, 255, 255, ${star.life})`);
+                    headGlow.addColorStop(0.5, `rgba(255, 255, 200, ${star.life * 0.7})`);
+                    headGlow.addColorStop(1, 'rgba(255, 215, 0, 0)');
+                    ctx.fillStyle = headGlow;
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, 8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Palabra romántica en lila brillante
+                if (star.wordLife === 0 && star.life < 0.75) {
+                    const offset = 40;
+                    if (star.direction === 0) {
+                        star.wordX = star.x - 50;
+                        star.wordY = star.y + offset;
+                    } else if (star.direction === 1) {
+                        star.wordX = star.x + 10;
+                        star.wordY = star.y + offset;
+                    } else if (star.direction === 2) {
+                        star.wordX = star.x - 40;
+                        star.wordY = star.y + offset;
+                    } else {
+                        star.wordX = star.x - 50;
+                        star.wordY = star.y - offset;
+                    }
+                    star.wordLife = 1.0;
+                }
+
+                if (star.wordLife > 0) {
+                    star.wordLife -= 0.006;
+
+                    if (star.wordLife > 0) {
+                        ctx.save();
+
+                        const appearEffect = Math.min((1 - star.wordLife) * 5, 1);
+                        const currentAlpha = star.wordLife * 0.95 * appearEffect;
+
+                        ctx.font = 'italic bold 28px Georgia';
+                        ctx.textAlign = 'center';
+
+                        // Color lila brillante
+                        ctx.fillStyle = `rgba(216, 180, 254, ${currentAlpha})`;
+                        ctx.shadowColor = `rgba(168, 85, 247, ${currentAlpha})`;
+                        ctx.shadowBlur = 30 * star.wordLife;
+
+                        ctx.fillText(star.word, star.wordX, star.wordY);
+
+                        // Halo exterior
+                        ctx.font = 'italic bold 30px Georgia';
+                        ctx.fillStyle = `rgba(192, 132, 252, ${currentAlpha * 0.5})`;
+                        ctx.shadowBlur = 50 * star.wordLife;
+                        ctx.fillText(star.word, star.wordX, star.wordY);
+
+                        // Núcleo blanco brillante
+                        ctx.font = 'italic bold 26px Georgia';
+                        ctx.fillStyle = `rgba(240, 220, 255, ${currentAlpha * 0.7})`;
+                        ctx.shadowBlur = 15 * star.wordLife;
+                        ctx.fillText(star.word, star.wordX, star.wordY);
+
+                        ctx.restore();
+                    }
+                }
+
+                const outOfBounds = star.x < -100 || star.x > W + 100 ||
+                    star.y < -100 || star.y > H + 100;
+
+                if ((star.life <= 0 && star.wordLife <= 0) || outOfBounds) {
+                    shootingStars.splice(i, 1);
+                }
+            }
+        }
+
         function easeOutBack(x) {
             const c1 = 1.70158;
             const c3 = c1 + 1;
@@ -343,17 +587,13 @@
             ctx.save();
             ctx.translate(x, y);
             ctx.scale(scale, scale);
-            
-            // ==========================================
-            // RAÍZ IMPACTANTE Y MÁGICA
-            // ==========================================
+
             if (progress > 0.0) {
                 const rootProgress = Math.min(progress / 0.35, 1);
                 const easedRoot = easeOutBack(rootProgress);
                 const maxRootDepth = 70;
                 const currentRootDepth = maxRootDepth * easedRoot;
-                
-                // Resplandor de energía en la base
+
                 if (rootProgress > 0.1) {
                     const glowSize = 25 * easedRoot;
                     const glowPulse = 1 + Math.sin(time * 6) * 0.3;
@@ -366,16 +606,15 @@
                     ctx.arc(0, 0, glowSize * glowPulse, 0, Math.PI * 2);
                     ctx.fill();
                 }
-                
-                // Partículas de energía mágica bajando por la raíz
+
                 if (rootProgress > 0.15 && rootProgress < 0.95) {
                     for (let i = 0; i < 8; i++) {
                         const pTime = (time * 4 + i * 0.4) % 1;
-                        const px = Math.sin(pTime * Math.PI * 2 + i) * 6; 
+                        const px = Math.sin(pTime * Math.PI * 2 + i) * 6;
                         const py = currentRootDepth * pTime;
                         const pSize = (1 - pTime) * 3.5;
                         const pAlpha = (1 - pTime) * 0.9;
-                        
+
                         ctx.fillStyle = `rgba(255, 255, 200, ${pAlpha})`;
                         ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
                         ctx.shadowBlur = 5;
@@ -385,12 +624,10 @@
                     }
                     ctx.shadowBlur = 0;
                 }
-                
-                // Dibujar raíces
+
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
-                
-                // Raíz principal
+
                 const mainRootWobble = Math.sin(time * 2) * 3;
                 ctx.strokeStyle = '#4a2c0a';
                 ctx.lineWidth = 4 * easedRoot;
@@ -400,57 +637,55 @@
                 ctx.moveTo(0, 0);
                 ctx.quadraticCurveTo(mainRootWobble, currentRootDepth * 0.5, mainRootWobble * 0.5, currentRootDepth);
                 ctx.stroke();
-                
-                // Raíces secundarias (aparecen progresivamente)
+
                 if (rootProgress > 0.4) {
                     const subProgress1 = (rootProgress - 0.4) / 0.6;
                     const easedSub1 = easeOutBack(subProgress1);
                     const subDepth1 = currentRootDepth * 0.6 * easedSub1;
                     const startX1 = mainRootWobble * 0.25;
                     const startY1 = currentRootDepth * 0.4;
-                    
+
                     ctx.lineWidth = 2.5 * easedSub1;
                     ctx.beginPath();
                     ctx.moveTo(startX1, startY1);
                     ctx.quadraticCurveTo(startX1 - 20 * easedSub1, startY1 + subDepth1 * 0.5, startX1 - 25 * easedSub1, startY1 + subDepth1);
                     ctx.stroke();
                 }
-                
+
                 if (rootProgress > 0.5) {
                     const subProgress2 = (rootProgress - 0.5) / 0.5;
                     const easedSub2 = easeOutBack(subProgress2);
                     const subDepth2 = currentRootDepth * 0.7 * easedSub2;
                     const startX2 = mainRootWobble * 0.25;
                     const startY2 = currentRootDepth * 0.55;
-                    
+
                     ctx.lineWidth = 2.5 * easedSub2;
                     ctx.beginPath();
                     ctx.moveTo(startX2, startY2);
                     ctx.quadraticCurveTo(startX2 + 18 * easedSub2, startY2 + subDepth2 * 0.5, startX2 + 22 * easedSub2, startY2 + subDepth2);
                     ctx.stroke();
                 }
-                
+
                 if (rootProgress > 0.6) {
                     const subProgress3 = (rootProgress - 0.6) / 0.4;
                     const easedSub3 = easeOutBack(subProgress3);
                     const subDepth3 = currentRootDepth * 0.5 * easedSub3;
                     const startX3 = mainRootWobble * 0.4;
                     const startY3 = currentRootDepth * 0.75;
-                    
+
                     ctx.lineWidth = 1.5 * easedSub3;
                     ctx.beginPath();
                     ctx.moveTo(startX3, startY3);
                     ctx.quadraticCurveTo(startX3 + 10 * easedSub3, startY3 + subDepth3 * 0.5, startX3 + 12 * easedSub3, startY3 + subDepth3);
                     ctx.stroke();
                 }
-                
+
                 ctx.shadowBlur = 0;
-                
-                // Destello final en las puntas de las raíces
+
                 if (rootProgress > 0.8) {
                     const tipGlow = (rootProgress - 0.8) / 0.2;
                     const pulse = 1 + Math.sin(time * 5) * 0.2;
-                    
+
                     const tipX = mainRootWobble * 0.5;
                     const tipY = currentRootDepth;
                     const g1 = ctx.createRadialGradient(tipX, tipY, 0, tipX, tipY, 12 * pulse);
@@ -462,25 +697,22 @@
                     ctx.fill();
                 }
             }
-            
-            // ==========================================
-            // TALLO Y FLOR (Código original mejorado)
-            // ==========================================
+
             const stemHeight = 120;
-            const rawStemProgress = Math.min(progress / 0.4, 1); 
+            const rawStemProgress = Math.min(progress / 0.4, 1);
             const easedStemProgress = easeOutBack(rawStemProgress);
             const currentStemHeight = stemHeight * easedStemProgress;
-            
+
             if (progress > 0.02) {
                 const stemTopY = -currentStemHeight;
                 const windFreq = time * 5;
                 const windBend = Math.sin(windFreq + (isLeft ? 0 : 2)) * 15 * easedStemProgress;
-                
+
                 const stemGradient = ctx.createLinearGradient(0, 0, windBend * 0.5, stemTopY);
                 stemGradient.addColorStop(0, '#2d5016');
                 stemGradient.addColorStop(0.5, '#4a7c2e');
                 stemGradient.addColorStop(1, '#6ba83a');
-                
+
                 ctx.strokeStyle = stemGradient;
                 ctx.lineWidth = 4;
                 ctx.lineCap = 'round';
@@ -488,14 +720,14 @@
                 ctx.moveTo(0, 0);
                 ctx.quadraticCurveTo(windBend, stemTopY / 2, windBend * 0.5, stemTopY);
                 ctx.stroke();
-                
+
                 if (progress > 0.15) {
                     const rawLeafProgress = Math.min((progress - 0.15) / 0.25, 1);
                     const leafProgress = easeOutBack(rawLeafProgress);
                     const leafSize = 25 * leafProgress;
                     const currentStemMid = stemTopY * 0.6;
                     const currentWind = windBend * 0.6;
-                    
+
                     ctx.save();
                     ctx.translate(currentWind - 2, currentStemMid);
                     const leafWobble1 = Math.sin(time * 6) * 0.15;
@@ -508,10 +740,10 @@
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(0, 0);
-                    ctx.quadraticCurveTo(-leafSize/2, -5, -leafSize, 0);
+                    ctx.quadraticCurveTo(-leafSize / 2, -5, -leafSize, 0);
                     ctx.stroke();
                     ctx.restore();
-                    
+
                     ctx.save();
                     ctx.translate(currentWind + 2, currentStemMid + 25);
                     const leafWobble2 = Math.sin(time * 6 + 1) * 0.15;
@@ -524,29 +756,29 @@
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(0, 0);
-                    ctx.quadraticCurveTo(leafSize/2, -5, leafSize, 0);
+                    ctx.quadraticCurveTo(leafSize / 2, -5, leafSize, 0);
                     ctx.stroke();
                     ctx.restore();
                 }
-                
+
                 if (progress > 0.35) {
                     const rawFlowerProgress = Math.min((progress - 0.35) / 0.65, 1);
                     const flowerY = stemTopY;
                     const currentWindTop = windBend * 0.5;
-                    
+
                     if (rawFlowerProgress < 0.3) {
                         const budScale = rawFlowerProgress / 0.3;
                         const budShake = Math.sin(time * 15) * 0.1 * rawFlowerProgress;
-                        
+
                         ctx.save();
                         ctx.translate(currentWindTop + budShake, flowerY);
                         ctx.scale(budScale, budScale);
-                        
+
                         ctx.fillStyle = '#8ba84a';
                         ctx.beginPath();
                         ctx.ellipse(0, 0, 10, 14, 0, 0, Math.PI * 2);
                         ctx.fill();
-                        
+
                         ctx.strokeStyle = '#6b8830';
                         ctx.lineWidth = 1.5;
                         ctx.beginPath();
@@ -557,13 +789,13 @@
                     } else {
                         const bloomRaw = (rawFlowerProgress - 0.3) / 0.7;
                         const bloomProgress = easeOutBack(bloomRaw);
-                        
+
                         ctx.save();
                         ctx.translate(currentWindTop, flowerY);
-                        
+
                         const sway = Math.sin(time * 4 + (isLeft ? 0 : 3)) * 0.25 * bloomProgress;
                         ctx.rotate(sway);
-                        
+
                         const petalCount = 14;
                         const maxPetalLength = 24;
                         const petalLength = maxPetalLength * bloomProgress;
@@ -573,37 +805,37 @@
                         for (let i = 0; i < petalCount; i++) {
                             const angle = (i / petalCount) * Math.PI * 2;
                             const petalReach = petalLength * (0.5 + bloomProgress * 0.5) * petalPulse;
-                            
+
                             ctx.save();
                             ctx.rotate(angle);
-                            
+
                             const petalGradient = ctx.createLinearGradient(0, 0, 0, -petalReach);
                             petalGradient.addColorStop(0, '#FFB400');
                             petalGradient.addColorStop(0.5, '#FFD700');
                             petalGradient.addColorStop(1, '#FFF080');
-                            
+
                             ctx.fillStyle = petalGradient;
                             ctx.beginPath();
                             ctx.ellipse(0, -petalReach * 0.6, petalWidth, petalReach * 0.6, 0, 0, Math.PI * 2);
                             ctx.fill();
-                            
+
                             ctx.strokeStyle = 'rgba(255, 180, 0, 0.6)';
                             ctx.lineWidth = 0.5;
                             ctx.stroke();
                             ctx.restore();
                         }
-                        
+
                         const centerSize = 13 * bloomProgress;
                         const centerGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, centerSize);
                         centerGradient.addColorStop(0, '#4a2c0a');
                         centerGradient.addColorStop(0.6, '#6b3f15');
                         centerGradient.addColorStop(1, '#8b5a2b');
-                        
+
                         ctx.fillStyle = centerGradient;
                         ctx.beginPath();
                         ctx.arc(0, 0, centerSize, 0, Math.PI * 2);
                         ctx.fill();
-                        
+
                         if (bloomProgress > 0.5) {
                             const seedOpacity = Math.min((bloomProgress - 0.5) * 2, 1);
                             ctx.fillStyle = `rgba(139, 90, 43, ${seedOpacity})`;
@@ -622,7 +854,7 @@
                                 ctx.fill();
                             }
                         }
-                        
+
                         const centerShine = ctx.createRadialGradient(-centerSize * 0.3, -centerSize * 0.3, 0, 0, 0, centerSize);
                         centerShine.addColorStop(0, 'rgba(255, 240, 180, 0.5)');
                         centerShine.addColorStop(1, 'rgba(255, 240, 180, 0)');
@@ -630,28 +862,28 @@
                         ctx.beginPath();
                         ctx.arc(0, 0, centerSize, 0, Math.PI * 2);
                         ctx.fill();
-                        
+
                         if (bloomProgress > 0.4) {
                             const sparkleIntensity = Math.min((bloomProgress - 0.4) / 0.6, 1);
                             const numSparkles = 20;
-                            
+
                             for (let i = 0; i < numSparkles; i++) {
                                 const orbitAngle = (i / numSparkles) * Math.PI * 2 + time * 5;
                                 const orbitRadius = (maxPetalLength * 1.4) + Math.sin(time * 4 + i * 1.5) * 12;
-                                
+
                                 const sx = Math.cos(orbitAngle) * orbitRadius;
                                 const sy = Math.sin(orbitAngle) * orbitRadius * 0.7;
-                                
+
                                 const twinkle = (Math.sin(time * 12 + i * 2.5) + 1) / 2;
-                                
+
                                 if (twinkle > 0.3) {
                                     const sparkleSize = (2 + Math.sin(time * 8 + i) * 0.8) * twinkle;
-                                    
+
                                     ctx.fillStyle = `rgba(255, 255, 220, ${twinkle * sparkleIntensity * 0.9})`;
                                     ctx.beginPath();
                                     ctx.arc(sx, sy, sparkleSize, 0, Math.PI * 2);
                                     ctx.fill();
-                                    
+
                                     ctx.fillStyle = `rgba(255, 255, 255, ${twinkle * sparkleIntensity * 0.5})`;
                                     ctx.beginPath();
                                     ctx.arc(sx, sy, sparkleSize * 3, 0, Math.PI * 2);
@@ -659,7 +891,7 @@
                                 }
                             }
                         }
-                        
+
                         ctx.restore();
                     }
                 }
@@ -672,23 +904,23 @@
             const globalPulse = 1 + Math.sin(time * 1.5) * 0.03;
             const cosRotation = Math.cos(heartRotationAngle);
             const sinRotation = Math.sin(heartRotationAngle);
-            
+
             for (const p of heartParticles) {
                 const rotatedX = p.baseX * cosRotation * globalPulse;
                 const scaleZ = p.z * sinRotation * 0.3 * globalPulse;
                 const finalX = centerX + rotatedX + scaleZ;
                 const finalY = centerY + p.baseY * globalPulse;
-                
+
                 const depthScale = 1 + p.z * sinRotation * 0.2;
                 const finalSize = p.size * depthScale * globalPulse;
                 const shimmer = Math.sin(time * 2.5 + p.phase) * 0.2 + 0.8;
                 const alpha = p.alpha * shimmer * (0.5 + depthScale * 0.5);
-                
+
                 ctx.beginPath();
                 ctx.arc(finalX, finalY, finalSize, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(${p.r}, ${p.g}, ${p.b}, ${alpha})`;
                 ctx.fill();
-                
+
                 if (p.isOutline && alpha > 0.65) {
                     ctx.beginPath();
                     ctx.arc(finalX, finalY, finalSize * 2.8, 0, Math.PI * 2);
@@ -704,23 +936,22 @@
             ctx.textBaseline = 'middle';
             ctx.shadowColor = 'rgba(255, 215, 0, 0.9)';
             ctx.shadowBlur = 25;
-            ctx.fillText('🤎Karolina🤎', centerX, centerY - 10);
+            ctx.fillText('Karolina🤎', centerX, centerY - 10);
             ctx.restore();
         }
 
         function drawBloomingFlowers() {
             const heartScale = Math.min(W, H) * 0.24;
-            
+
             const leftX = centerX - heartScale * 1.9;
             const rightX = centerX + heartScale * 1.9;
-            
-            // Tu ajuste perfecto para la posición vertical
+
             const flowerY = centerY + heartScale * 1.9;
-            
+
             const flowerScale = Math.min(W, H) * 0.0018;
             const cycleDuration = 4.0;
             const cycleTime = time % cycleDuration;
-            
+
             let mainProgress;
             if (cycleTime < cycleDuration * 0.6) {
                 mainProgress = cycleTime / (cycleDuration * 0.6);
@@ -729,10 +960,10 @@
             } else {
                 mainProgress = 1 - (cycleTime - cycleDuration * 0.85) / (cycleDuration * 0.15);
             }
-            
+
             const leftProgress = Math.max(0, Math.min(1, mainProgress));
             drawBloomingFlower(leftX, flowerY, leftProgress, flowerScale, true);
-            
+
             const rightCycleTime = (time + cycleDuration / 2) % cycleDuration;
             let rightProgress;
             if (rightCycleTime < cycleDuration * 0.6) {
@@ -752,12 +983,12 @@
                 p.angle += rotationSpeed;
                 const x = p.centerX + Math.cos(p.angle) * p.radius;
                 const y = p.centerY + Math.sin(p.angle) * p.radius * 0.4;
-                
+
                 const shimmer = Math.sin(time * 2 + p.phase) * 0.3 + 0.7;
                 const alpha = p.alpha * shimmer;
                 const distRatio = p.radius / (Math.min(W, H) * 0.24 * 2.8);
                 const brightness = 1 - distRatio * 0.7;
-                
+
                 ctx.beginPath();
                 ctx.arc(x, y, p.size, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(${Math.floor(255 * brightness)}, ${Math.floor(215 * brightness)}, 0, ${alpha})`;
@@ -770,7 +1001,7 @@
             gradient.addColorStop(0.2, 'rgba(255, 215, 0, 0.5)');
             gradient.addColorStop(0.5, 'rgba(255, 180, 0, 0.2)');
             gradient.addColorStop(1, 'rgba(255, 140, 0, 0)');
-            
+
             ctx.beginPath();
             ctx.arc(centerX, galaxyCenterY, 100, 0, Math.PI * 2);
             ctx.fillStyle = gradient;
@@ -786,7 +1017,7 @@
                 if (p.x > W) p.x = 0;
                 if (p.y < 0) p.y = H;
                 if (p.y > H) p.y = 0;
-                
+
                 const shimmer = Math.sin(p.phase) * 0.3 + 0.7;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -798,10 +1029,14 @@
         function animate() {
             ctx.clearRect(0, 0, W, H);
             time += 0.016;
+
+            createShootingStar();
+            updateAndDrawShootingStars();
             drawFloatingParticles();
             drawGalaxy();
             drawHeart();
             drawBloomingFlowers();
+
             requestAnimationFrame(animate);
         }
 
@@ -811,7 +1046,7 @@
             const flowers = document.querySelectorAll('.floating-flower');
             const texts = document.querySelectorAll('.love-text');
             const allElements = [...flowers, ...texts];
-            
+
             const orbitConfigs = [
                 { rx: 0.22, ry: 0.18, speed: 0.012 }, { rx: 0.28, ry: 0.23, speed: -0.010 },
                 { rx: 0.34, ry: 0.28, speed: 0.009 }, { rx: 0.40, ry: 0.33, speed: -0.008 },
@@ -822,7 +1057,7 @@
                 { rx: 0.20, ry: 0.16, speed: 0.013 }, { rx: 0.35, ry: 0.29, speed: -0.008 },
                 { rx: 0.45, ry: 0.37, speed: 0.007 }, { rx: 0.58, ry: 0.48, speed: -0.004 }
             ];
-            
+
             allElements.forEach((el, i) => {
                 const cfg = orbitConfigs[i % orbitConfigs.length];
                 orbitElements.push({
@@ -862,14 +1097,14 @@
         }
 
         const letters = {
-            1: { title: "Eres mi sol 💛", content: "Como el sol que da vida a las flores amarillas, tú das sentido a mi existencia. Tu amor me hace crecer, me hace fuerte, me hace feliz cada día.", signature: "Para siempre juntos " },
-            2: { title: "Te adoro 💕", content: "En este día de las flores amarillas, quiero que sepas que eres la luz que ilumina mi universo. Como estas flores que brillan en el espacio, mi amor por ti es infinito.", signature: "Con todo mi amor 💛" },
-            3: { title: "Karolina 🤎", content: "Eres la razón de cada una de mis sonrisas. Como estas flores que giran a tu alrededor, mi mundo gira en torno a ti. Te amo con todo mi corazón.", signature: "Eternamente tuyo " },
-            4: { title: "Mi Amor 💛", content: "Prometo estar contigo en cada amanecer y cada atardecer, reír contigo en los buenos momentos y sostenerte en los difíciles. Eres mi persona favorita.", signature: "Siempre tuyo/a ✨" },
-            5: { title: "Me encantas 🌻", content: "Gracias por ser quien eres, por tu sonrisa que me alegra el día, por tu amor que me da fuerza. Cada momento contigo es un regalo que atesoro.", signature: "Con amor eterno 💛" },
-            6: { title: "Amor de mi vida 💕", content: "Contigo descubrí que el amor verdadero existe, que las estrellas brillan más cuando estamos juntos, y que la felicidad es tenerte a mi lado.", signature: "Mi todo 💕" },
-            7: { title: "Amor de mi vida 💛", content: "Podría darte mil razones por las que te amo, pero solo necesito una: eres tú. Tú eres suficiente para hacer de mi vida algo maravilloso.", signature: "Con amor infinito 💛" },
-            8: { title: "Siempre juntos 💛", content: "El mejor regalo que la vida me ha dado es conocerte. Cada día a tu lado es un 21 de septiembre eterno, lleno de flores amarillas y amor verdadero.", signature: "Te amo 💕" }
+            1: { title: "Eres Mi Sol 💛", content: "Como El Sol Que Da Vida A Las Flores Amarillas, Tú Das Sentido A Mi Existencia. Tu Amor Me Hace Crecer, Me Hace Fuerte, Me Hace Feliz Cada Día.", signature: "Para Siempre Juntos " },
+            2: { title: "Te Adoro 💕", content: "En Este Día De Las Flores Amarillas, Quiero Que Sepas Que Eres La Luz Que Ilumina Mi Universo. Como Estas Flores Que Brillan En El Espacio, Mi Amor Por Ti Es Infinito.", signature: "Con Todo Mi Amor 💛" },
+            3: { title: "Karolina 🤎", content: "Eres La Razón De Cada Una De Mis Sonrisas. Como Estas Flores Que Giran A Tu Alrededor, Mi Mundo Gira En Torno A Ti. Te Amo Con Todo Mi Corazón.", signature: "Eternamente Tuyo " },
+            4: { title: "Mi Amor 💛", content: "Prometo Estar Contigo En Cada Amanecer Y Cada Atardecer, Reír Contigo En Los Buenos Momentos Y Sostenerte En Los Difíciles. Eres Mi Persona Favorita.", signature: "Siempre Tuyo ✨" },
+            5: { title: "Me Encantas 🌻", content: "Gracias Por Ser Quien Eres, Por Tu Sonrisa Que Me Alegra El Día, Por Tu Amor Que Me Da Fuerza. Cada Momento Contigo Es Un Regalo Que Atesoro.", signature: "Con Amor Eterno " },
+            6: { title: "Mi Amorsito 💕", content: "Contigo Descubrí Que El Amor Verdadero Existe, Que Las Estrellas Brillan Más Cuando Estamos Juntos, Y Que La Felicidad Es Tenerte A Mi Lado.", signature: "Mi Todo 💕" },
+            7: { title: "Amor De Mi Vida 💛", content: "Podría Darte Mil Razones Por Las Que Te Amo, Pero Solo Necesito Una: Eres Tú. Tú Eres Suficiente Para Hacer De Mi Vida Algo Maravilloso.", signature: "Con Amor Infinito 💛" },
+            8: { title: "Siempre Juntos 💛", content: "El Mejor Regalo Que La Vida Me Ha Dado Es Conocerte. Cada Día A Tu Lado Es Un 21 De Septiembre Eterno, Lleno De Flores Amarillas Y Amor Verdadero.", signature: "Te Quiero 💕" }
         };
 
         function showLetter(num) {
@@ -885,7 +1120,7 @@
             document.getElementById('letterModal').classList.remove('active');
         }
 
-        document.getElementById('letterModal').addEventListener('click', function(e) {
+        document.getElementById('letterModal').addEventListener('click', function (e) {
             if (e.target === this) closeLetter();
         });
 
@@ -896,7 +1131,7 @@
             const btn = document.querySelector('.music-btn');
             if (musicPlaying) {
                 bgMusic.pause();
-                btn.textContent = '🎵 Música';
+                btn.textContent = ' Música';
                 musicPlaying = false;
             } else {
                 bgMusic.play().catch(e => console.log('Audio no disponible'));
@@ -909,7 +1144,7 @@
             resize();
             initOrbits();
         });
-        
+
         resize();
         createStars();
         initOrbits();
